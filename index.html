@@ -1,6 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="https://telemetry.mozilla.org/favicon.ico">
 <style>
 
 body {
@@ -446,8 +447,9 @@ async function updateUI(params = null) {
 async function update(params = null) {
   document.getElementById("loading-overlay").classList.remove("hidden");
 
-  await updateUI(params);
   makeHash();
+  params = params || parseQueryString();
+  await updateUI(params);
   await updateMetrics();
 
   document.getElementById("loading-overlay").classList.add("hidden");
